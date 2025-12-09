@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, deprecated_member_use
 
+import 'package:flexihome/Design/Authentication/account_type_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,31 +20,65 @@ class _OnboardPageState extends State<OnboardPage> {
     _controller.dispose();
     super.dispose();
   }
+  final List<_Page> _pages = const [
+    _Page(
+      title: "Gate Security",
+      subtitle:
+          "Ensure only verified & approved visitors enter your society. Allows users to manage & monitor access to society.",
+      animationPath: "assets/image1.png",
+    ),
+    _Page(
+      title: "Resident Dictionary",
+      subtitle:
+          "Serves as a comprehensive database of resident profiles within the society management system.",
+      animationPath: "assets/image2.png",
+    ),
+    _Page(
+      title: "Community",
+      subtitle:
+          "Aims to bring society members together by providing a platform for communication, collaboration & small-scale business.",
+      animationPath: "assets/image3.png",
+    ),
+    _Page(
+      title: "Support Helpdesk",
+      subtitle:
+          "Provides users with a dedicated platform to seek assistance and resolve any issues related to the society management system.",
+      animationPath: "assets/image4.png",
+    ),
+  ];
 
-  void _showSnackBar(BuildContext context) {
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.hideCurrentSnackBar();
+  // void _showSnackBar(BuildContext context) {
+  //   final messenger = ScaffoldMessenger.of(context);
+  //   messenger.hideCurrentSnackBar();
 
-    messenger.showSnackBar(
-      SnackBar(
-        behavior: SnackBarBehavior.floating,
-        content: const Text("Skip button"),
-        margin: const EdgeInsets.all(16),
-        duration: const Duration(seconds: 2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      ),
-    );
-  }
+  //   messenger.showSnackBar(
+  //     SnackBar(
+  //       behavior: SnackBarBehavior.floating,
+  //       content: const Text("Skip button"),
+  //       margin: const EdgeInsets.all(16),
+  //       duration: const Duration(seconds: 2),
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+  //     ),
+  //   );
+  // }
 
-  void _onNextPressed() {
-    if (_currentIndex < 2) {
+   void _onNextPressed() {
+    if (_currentIndex < _pages.length - 1 ) {
       _controller.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     } else {
-      print("Go to Home Screen");
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AccountTypeSelectionScreen()));
     }
+  }
+
+  void _onSkipPressed() {
+    _controller.animateToPage(
+     _pages.length - 1, 
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -59,7 +94,9 @@ class _OnboardPageState extends State<OnboardPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () => _showSnackBar(context),
+                    onPressed: () {
+                      _onSkipPressed();
+                    } ,
                     child: const Text(
                       "Skip",
                       style: TextStyle(fontSize: 16, color: Colors.black),
@@ -69,35 +106,18 @@ class _OnboardPageState extends State<OnboardPage> {
               ),
             ),
 
-            Expanded(
+           Expanded(
               child: PageView(
                 controller: _controller,
                 onPageChanged: (index) {
                   setState(() => _currentIndex = index);
                 },
-                children: const [
-                  _Page(
-                    title: "Gate Security",
-                    subtitle:
-                        "Ensure only verified & approved visitors enter your society. Allows users to manage & monitor access to society.",
-                    animationPath: "assets/image1.png",
-                  ),
-                  _Page(
-                    title: "Track Health",
-                    subtitle: "See what’s really inside your food.",
-                    animationPath: "assets/image1.png",
-                  ),
-                  _Page(
-                    title: "Eat Better",
-                    subtitle: "Get smarter suggestions every day.",
-                    animationPath: "assets/image1.png",
-                  ),
-                ],
+                children: _pages,
               ),
             ),
 
             const SizedBox(height: 24),
-            _DotsIndicator(currentIndex: _currentIndex, count: 3),
+            _DotsIndicator(currentIndex: _currentIndex, count: _pages.length,),
 
             const SizedBox(height: 60),
 
@@ -120,7 +140,7 @@ class _OnboardPageState extends State<OnboardPage> {
                   ),
                   onPressed: _onNextPressed,
                   child: Text(
-                    _currentIndex == 2 ? "Get Started" : "Next",
+                    _currentIndex == _pages.length - 1 ? "Get Started" : "Next",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
