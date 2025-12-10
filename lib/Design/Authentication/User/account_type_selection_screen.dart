@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:flexihome/Design/Authentication/login.dart';
+import 'package:flexihome/Design/Authentication/User/login.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,73 +17,83 @@ class _AccountTypeSelectionScreenState
     extends State<AccountTypeSelectionScreen> {
   String? selectedAccountType;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                'Please Select Your Account Type',
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.5,
-                  ),
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Colors.white,
+    body: SafeArea(
+      child: Column(
+        children: [
+          Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: ListView(
+                  children: [
+                    Center(
+                      child: Text(
+                        'Please Select Your Account Type',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                            
+                    const SizedBox(height: 20),
+                            
+                    AccountTypeCard(
+                      imagePath: "assets/avtar1.png",
+                      title: "Member",
+                      subtitle: "Login as society member",
+                      isSelected: selectedAccountType == "member",
+                      onTap: () {
+                        setState(() {
+                          selectedAccountType = "member";
+                        });
+                      },
+                    ),
+                            
+                    const SizedBox(height: 20),
+                            
+                    AccountTypeCard(
+                      imagePath: "assets/avtar3.png",
+                      title: "Secretary/Treasurer",
+                      subtitle: "Login as secretary person",
+                      isSelected: selectedAccountType == "secretary",
+                      onTap: () {
+                        setState(() {
+                          selectedAccountType = "secretary";
+                        });
+                      },
+                    ),
+                            
+                    const SizedBox(height: 20),
+                            
+                    AccountTypeCard(
+                      imagePath: "assets/avtar2.png",
+                      title: "Security Guard",
+                      subtitle: "Login as security guard",
+                      isSelected: selectedAccountType == "guard",
+                      onTap: () {
+                        setState(() {
+                          selectedAccountType = "guard";
+                        });
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
-            SizedBox(height: 50),
-            Expanded(
-              child: ListView(
-                children: [
-                  AccountTypeCard(
-                    imagePath: "assets/avtar1.png",
-                    title: "Member",
-                    subtitle: "Login as society member",
-                    isSelected: selectedAccountType == "member",
-                    onTap: () {
-                      setState(() {
-                        selectedAccountType = "member";
-                      });
-                    },
-                  ),
-                  SizedBox(height: 24),
-                  AccountTypeCard(
-                    imagePath: "assets/avtar3.png",
-                    isSelected: selectedAccountType == "secretary",
-                    title: "Secretary/Treasurer",
-                    subtitle: "Login as secretary person",
-                    onTap: () {
-                      setState(() {
-                        selectedAccountType = "secretary";
-                      });
-                    },
-                  ),
-                  SizedBox(height: 24),
-                  AccountTypeCard(
-                    imagePath: "assets/avtar2.png",
-                    title: "Security Guard",
-                    isSelected: selectedAccountType == "guard",
-                    subtitle: "Login as security guard",
-                    onTap: () {
-                      setState(() {
-                        selectedAccountType = "guard";
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 390,
+        
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: SizedBox(
+              width: 350,
               height: 44,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF407BFF),
+                  backgroundColor: const Color(0xFF407BFF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -94,29 +104,32 @@ class _AccountTypeSelectionScreenState
                         if (kDebugMode) {
                           print("Selected: $selectedAccountType");
                         }
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(_)=>  LoginScreen()));
+                        if (selectedAccountType == "member") {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        } else if (selectedAccountType == "secretary") {
+                          Navigator.pushReplacementNamed(context, '/secretary');
+                        } else {
+                          Navigator.pushReplacementNamed(
+                              context, '/guardLogin');
+                        }
                       },
                 child: Text(
                   "Register Society",
-                  textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.5,
-                    ),
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
 }
-
+ }
 class AccountTypeCard extends StatelessWidget {
   final String imagePath;
   final String title;

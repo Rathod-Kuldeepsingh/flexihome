@@ -1,7 +1,12 @@
-import 'package:flexihome/Design/Authentication/account_type_selection_screen.dart';
-import 'package:flexihome/Design/Authentication/login.dart';
-import 'package:flexihome/Design/Authentication/registration.dart';
+import 'package:flexihome/Design/Authentication/Secretary/Sec_otp.dart';
+import 'package:flexihome/Design/Authentication/Secretary/Secretary_login.dart';
+import 'package:flexihome/Design/Authentication/User/Otp_screen.dart';
+import 'package:flexihome/Design/Authentication/User/account_type_selection_screen.dart';
+import 'package:flexihome/Design/Authentication/User/login.dart';
+import 'package:flexihome/Design/Authentication/User/registration.dart';
 import 'package:flexihome/Design/OnboardingScreen/OnboardPage.dart';
+import 'package:flexihome/Design/Society%20Registration/Society_otp.dart';
+import 'package:flexihome/Design/Society%20Registration/Society_reg.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,11 +20,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: OnboardPage(),
+      home:OnboardPage(),
       routes:{
         '/onboardpage': (context) => OnboardPage(),
         '/select': (context) => AccountTypeSelectionScreen(),
-        '/create': (context) => RegistrationScreen()
+        '/login': (context) => LoginScreen(),
+        '/create': (context) => RegistrationScreen(),
+        '/otp':(context)=> OtpScreen(),
+        '/secretary':(context)=> SecretaryLogin(),
+        '/secotp':(context)=> SecOtp(),
+        '/socirtyOtp':(context)=> SocietyOtp(),
+        '/societyreg':(context)=> RegisterSocietyScreen()
       }
     );
   }
