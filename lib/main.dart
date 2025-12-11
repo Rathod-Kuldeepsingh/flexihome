@@ -7,6 +7,7 @@ import 'package:flexihome/Design/Authentication/User/registration.dart';
 import 'package:flexihome/Design/OnboardingScreen/OnboardPage.dart';
 import 'package:flexihome/Design/Society%20Registration/Society_otp.dart';
 import 'package:flexihome/Design/Society%20Registration/Society_reg.dart';
+import 'package:flexihome/Design/Society%20Registration/approved.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:OnboardPage(),
+      home: OnboardPage(),
       routes:{
         '/onboardpage': (context) => OnboardPage(),
         '/select': (context) => AccountTypeSelectionScreen(),
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         '/secretary':(context)=> SecretaryLogin(),
         '/secotp':(context)=> SecOtp(),
         '/socirtyOtp':(context)=> SocietyOtp(),
-        '/societyreg':(context)=> RegisterSocietyScreen()
+        '/societyreg':(context)=> RegisterSocietyScreen(),
+        '/approved':(context)=> ApprovedScreen()
       }
     );
   }

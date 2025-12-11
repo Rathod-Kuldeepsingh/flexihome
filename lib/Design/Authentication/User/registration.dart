@@ -22,32 +22,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       hintText: hint,
       labelStyle: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
       hintStyle: GoogleFonts.poppins(fontSize: 16, color: Colors.grey),
-     
+
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
 
       errorMaxLines: 2,
 
-     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Colors.grey),
-    ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+        borderSide: const BorderSide(color: Colors.grey),
+      ),
 
-    
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Color(0xFF407BFF), width: 2),
-    ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+        borderSide: const BorderSide(color: Color(0xFF407BFF), width: 2),
+      ),
 
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
 
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Colors.red),
-    ),
-
-   
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Colors.red, width: 2),)
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+        borderSide: const BorderSide(color: Colors.red, width: 2),
+      ),
     );
   }
 
@@ -59,6 +57,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        scrolledUnderElevation: 0,
         title: Text(
           "Create Account",
           style: GoogleFonts.poppins(

@@ -26,8 +26,10 @@ class _RegisterSocietyScreenState extends State<RegisterSocietyScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.white,
+
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black87),
           onPressed: () => Navigator.pushNamed(context, '/select'),
@@ -57,7 +59,10 @@ class _RegisterSocietyScreenState extends State<RegisterSocietyScreen> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
+                ),
                 child: _getStepWidget(),
               ),
             ),
@@ -84,7 +89,7 @@ class _RegisterSocietyScreenState extends State<RegisterSocietyScreen> {
                         }
                       } else if (_currentStep == 1) {
                         if (!_adminFormKey.currentState!.validate()) return;
-                
+
                         if (!isChecked) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -93,11 +98,11 @@ class _RegisterSocietyScreenState extends State<RegisterSocietyScreen> {
                           );
                           return;
                         }
-                
+
                         setState(() => _currentStep = 2); // ✅ OTP screen
                       }
                     },
-                
+
                     child: Text(
                       _currentStep == 0 ? 'Add Society' : 'Continue',
                       style: GoogleFonts.poppins(

@@ -56,6 +56,8 @@ class _OtpScreenState extends State<OtpScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: true,
         bottom: PreferredSize(

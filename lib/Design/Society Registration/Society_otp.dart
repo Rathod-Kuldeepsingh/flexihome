@@ -149,7 +149,9 @@ class _SocietyOtpState extends State<SocietyOtp> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/approved');
+                    },
                     child: Text(
                       "Verify",
                       textAlign: TextAlign.center,

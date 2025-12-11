@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
+
 class SecOtp extends StatefulWidget {
   const SecOtp({super.key});
 
@@ -12,7 +13,7 @@ class SecOtp extends StatefulWidget {
 }
 
 class _SecOtpState extends State<SecOtp> {
-   static const int _totalSeconds = 120;
+  static const int _totalSeconds = 120;
   int _secondsRemaining = _totalSeconds;
   Timer? _timer;
 
@@ -54,6 +55,8 @@ class _SecOtpState extends State<SecOtp> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: true,
         bottom: PreferredSize(

@@ -25,7 +25,7 @@ Widget build(BuildContext context) {
         children: [
           Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ListView(
                   children: [
                     Center(
@@ -87,7 +87,7 @@ Widget build(BuildContext context) {
         
 
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: SizedBox(
               width: 350,
               height: 44,
