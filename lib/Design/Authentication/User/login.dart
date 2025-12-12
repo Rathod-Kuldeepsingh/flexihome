@@ -209,6 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (!_memberFormKey.currentState!.validate()) {
                         return;
                       }
+                      Navigator.pushReplacementNamed(context, '/dash');
                     },
                     child: Text(
                       "Login",

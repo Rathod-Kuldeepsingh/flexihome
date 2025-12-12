@@ -4,7 +4,9 @@ import 'package:flexihome/Design/Authentication/User/Otp_screen.dart';
 import 'package:flexihome/Design/Authentication/User/account_type_selection_screen.dart';
 import 'package:flexihome/Design/Authentication/User/login.dart';
 import 'package:flexihome/Design/Authentication/User/registration.dart';
+import 'package:flexihome/Design/Home/Dashboard.dart';
 import 'package:flexihome/Design/OnboardingScreen/OnboardPage.dart';
+import 'package:flexihome/Design/Profile/Userprofile.dart';
 import 'package:flexihome/Design/Society%20Registration/Society_otp.dart';
 import 'package:flexihome/Design/Society%20Registration/Society_reg.dart';
 import 'package:flexihome/Design/Society%20Registration/approved.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: OnboardPage(),
+      home: Userprofile(),
       routes:{
         '/onboardpage': (context) => OnboardPage(),
         '/select': (context) => AccountTypeSelectionScreen(),
@@ -32,7 +34,8 @@ class MyApp extends StatelessWidget {
         '/secotp':(context)=> SecOtp(),
         '/socirtyOtp':(context)=> SocietyOtp(),
         '/societyreg':(context)=> RegisterSocietyScreen(),
-        '/approved':(context)=> ApprovedScreen()
+        '/approved':(context)=> ApprovedScreen(),
+        '/dash':(context)=> Dashboard()
       }
     );
   }
